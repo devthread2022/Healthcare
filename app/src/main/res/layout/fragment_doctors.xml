@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Doctors.Doctors"
+    android:orientation="vertical"
+    android:background="#F6F6F6">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorOne">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctors"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/white"/>
+
+    </FrameLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/box_back"
+        android:layout_margin="10dp"
+        android:drawableStart="@drawable/ic_baseline_search_24"
+        android:padding="10dp"
+        android:hint="Search here.."
+        android:textSize="15sp"
+        android:fontFamily="@font/nunito"
+        android:textColor="@color/black"
+        android:textColorHint="#959595"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/doc_recycler"/>
+
+</LinearLayout>
