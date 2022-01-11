@@ -7,10 +7,143 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"/>
+        android:layout_height="50dp"
+        android:background="@color/colorOne">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Personal Details"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Name"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/gender"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Gender"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/dob"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Date of Birth"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/blood"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Blood Group"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/marital"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Marital Status"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Height"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Weight"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/emergency"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Emergency Contact"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+
+            <LinearLayout
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_back"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>

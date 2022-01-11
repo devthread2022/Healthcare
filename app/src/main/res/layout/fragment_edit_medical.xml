@@ -7,10 +7,118 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="50dp"
+        android:background="@color/colorOne">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Medical Details"
+            android:layout_gravity="center"
+            android:textSize="16sp"
+            android:fontFamily="@font/nunito"
+            android:textColor="@color/white"/>
+    </FrameLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <EditText
+                android:id="@+id/allergy"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Allergies"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/medication"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Current Medication"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/pastMedi"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Past Medication"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/disease"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Chronic Disease"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/injury"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Injuries"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+            <EditText
+                android:id="@+id/surgery"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/box_back"
+                android:hint="Surgeries"
+                android:padding="10dp"
+                android:fontFamily="@font/nunito"
+                android:textColor="@color/black"
+                android:textColorHint="#dddddd"
+                android:textSize="15sp"
+                android:layout_marginTop="15dp"/>
+
+            <LinearLayout
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_back"
+                android:gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/nunito"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
