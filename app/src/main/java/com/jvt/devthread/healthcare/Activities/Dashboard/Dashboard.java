@@ -1,11 +1,19 @@
 package com.jvt.devthread.healthcare.Activities.Dashboard;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,7 +26,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -52,8 +65,11 @@ public class Dashboard extends Fragment {
     FirebaseAuth firebaseAuth;
     String uid,name,email,mobile;
     Long walletBalance;
-    TextView user, regNumber;
+    TextView user, regNumber,profile,gallery;
+    CardView logout;
     private List<SpotlightModel> spotlightModelList = new ArrayList<>();
+    FusedLocationProviderClient fusedLocationProviderClient;
+    String userLocation;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,11 +80,21 @@ public class Dashboard extends Fragment {
         close = dialog.findViewById(R.id.cancel);
         user = dialog.findViewById(R.id.user);
         regNumber = dialog.findViewById(R.id.regnumber);
+        profile = dialog.findViewById(R.id.profile);
+        gallery = dialog.findViewById(R.id.gallery);
+        logout = dialog.findViewById(R.id.logout);
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReferenceWallet = FirebaseDatabase.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference1 = FirebaseDatabase.getInstance().getReference();
         uid = firebaseAuth.getCurrentUser().getUid();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED){
+            getUserLocation();
+        }else {
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
+        }
         databaseReferenceWallet.child("Users").child(uid).child("WalletBalance").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -114,6 +140,16 @@ public class Dashboard extends Fragment {
         });
         close.setOnClickListener(view1 -> {
             dialog.dismiss();
+        });
+        profile.setOnClickListener(view1 -> {
+            dialog.dismiss();
+            Fragment fragment = new Profile();
+            loadFragment(fragment,"Profile");
+        });
+        gallery.setOnClickListener(view1 -> {
+            dialog.dismiss();
+            Fragment fragment = new Gallery();
+            loadFragment(fragment,"Gallery");
         });
         binding.bookAppoint.setOnClickListener(view1 -> {
             Fragment appointment = new OnlineAppointment();
@@ -171,6 +207,27 @@ public class Dashboard extends Fragment {
             handler.post(() -> {
                 activeFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             });
+        });
+    }
+    @SuppressLint("MissingPermission")
+    private void getUserLocation() {
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null){
+                    try {
+                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                        List<Address> addresses = geocoder.getFromLocation(
+                                location.getLatitude(),location.getLongitude(),1
+                        );
+                        userLocation = addresses.get(0).getLocality()+","+addresses.get(0).getCountryName();
+                        binding.location.setText(userLocation);
+                    }catch (Exception e){
+                        Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
         });
     }
 }
